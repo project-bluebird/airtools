@@ -1,5 +1,6 @@
 # airtools
 ![License](https://img.shields.io/github/license/project-bluebird/airtools)
+![example workflow](https://github.com/project-bluebird/airtools/actions/workflows/unit-tests.yml/badge.svg)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Installation
