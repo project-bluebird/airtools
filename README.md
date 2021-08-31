@@ -25,7 +25,7 @@ $ pytest [<optional-arguments>] tests
 
 #### Style guide
 
-Docstrings should follow [numpydoc][https://numpydoc.readthedocs.io/en/latest/format.html] convention.
+Docstrings should follow [numpydoc](https://numpydoc.readthedocs.io/en/latest/format.html) convention.
 We encourage extensive documentation.
 
-The python code itself should follow [PEP8][https://www.python.org/dev/peps/pep-0008/] convention whenever possible, with at most about 500 lines of code (not including docstrings) per script.
+The python code itself should follow [PEP8](https://www.python.org/dev/peps/pep-0008/) convention whenever possible, with at most about 500 lines of code (not including docstrings) per script.
