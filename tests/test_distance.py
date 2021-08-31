@@ -1,5 +1,4 @@
 import pytest
-import math
 
 from airtools.distance import (
     geodesic_distance,

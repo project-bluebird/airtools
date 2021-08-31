@@ -1,1 +1,1 @@
-from .__version__ import __version__
+"""airtools. A utils package for Project BlueBird"""

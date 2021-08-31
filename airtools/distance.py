@@ -33,7 +33,7 @@ def geodesic_distance(from_lat, from_lon, to_lat, to_lon, **kwargs):
         The geodesic distance between two points.
     Examples
     --------
-    >>> >>> pydodo.geodesic_distance(from_lat = 51.5 , from_lon = 0.12, to_lat = 50.6, to_lon = -1.9)
+    >>> >>> airtools.distance.geodesic_distance(from_lat = 51.5 , from_lon = 0.12, to_lat = 50.6, to_lon = -1.9)
     """
     major_semiaxis = (
         _EARTH_RADIUS if "major_semiaxis" not in kwargs else kwargs["major_semiaxis"]
@@ -78,7 +78,7 @@ def great_circle_distance(from_lat, from_lon, to_lat, to_lon, **kwargs):
         The great-circle distance between two points.
     Examples
     --------
-    >>> pydodo.great_circle_distance(from_lat = 51.5 , from_lon = 0.12, to_lat = 50.6, to_lon = -1.9)
+    >>> airtools.distance.great_circle_distance(from_lat = 51.5 , from_lon = 0.12, to_lat = 50.6, to_lon = -1.9)
     """
     radius = _EARTH_RADIUS if "radius" not in kwargs else kwargs["radius"]
 
@@ -108,7 +108,7 @@ def vertical_distance(from_alt, to_alt, **kwargs):
         The verticle distance between two points.
     Examples
     --------
-    >>> pydodo.vertical_distance(from_alt = 200, to_alt = 350)
+    >>> airtools.distance.vertical_distance(from_alt = 200, to_alt = 350)
     """
     utils._validate_is_positive(from_alt, "altitude")
     utils._validate_is_positive(to_alt, "altitude")
@@ -138,7 +138,7 @@ def _lla_to_ECEF(lat, lon, alt=0, radius=_EARTH_RADIUS, f=_FLATTENING):
     https://en.wikipedia.org/wiki/ECEF
     Examples
     --------
-    >>> pydodo.distance_measures.lla_to_ECEF(lat = 51.5 , lon = 0.12, alt = 200)
+    >>> airtools.distance.lla_to_ECEF(lat = 51.5 , lon = 0.12, alt = 200)
     """
 
     lat_r = np.deg2rad(lat)
@@ -186,7 +186,7 @@ def euclidean_distance(from_lat, from_lon, from_alt, to_lat, to_lon, to_alt, **k
     https://en.wikipedia.org/wiki/ECEF
     Examples
     --------
-    >>> pydodo.euclidean_distance(from_lat = 51.5 , from_lon = 0.12, from_alt = 200, to_lat = 50.6, to_lon = -1.9, to_alt = 350)
+    >>> airtools.distance.euclidean_distance(from_lat = 51.5 , from_lon = 0.12, from_alt = 200, to_lat = 50.6, to_lon = -1.9, to_alt = 350)
     """
     major_semiaxis = (
         _EARTH_RADIUS if "major_semiaxis" not in kwargs else kwargs["major_semiaxis"]
