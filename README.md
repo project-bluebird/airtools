@@ -1,6 +1,8 @@
 # airtools
-![License](https://img.shields.io/github/license/project-bluebird/airtools)
+
 ![example workflow](https://github.com/project-bluebird/airtools/actions/workflows/unit-tests.yml/badge.svg)
+[![codecov](https://codecov.io/gh/project-bluebird/airtools/branch/main/graph/badge.svg?token=58uMq5hbNt)](https://codecov.io/gh/project-bluebird/airtools)
+![License](https://img.shields.io/github/license/project-bluebird/airtools)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Installation
