@@ -1,9 +1,9 @@
 from pyproj import Geod
 
 
-class Point:
+class Coord:
     """
-    Position on the globe.
+    (Latitude, Longitude) position on the globe.
     """
 
     geodesic = Geod(ellps="WGS84")
@@ -13,23 +13,23 @@ class Point:
         Construct a new instance.
         """
 
-        self.lat = lat
-        self.long = long
+        self.lat = lat      # [deg]
+        self.long = long    # [deg]
 
-    def forward(self, distance, heading):
+    def forward(self, dist, heading):
         """
-        Relative to the current position,
+        Relative to the current coordinate position,
         create a position a given distance away following a given heading.
         """
 
         proj_long, proj_lat, _ = self.geodesic.fwd(
-            self.long, self.lat, heading, distance)
+            self.long, self.lat, heading, dist)
 
-        return Point(proj_lat, proj_long)
+        return Coord(proj_lat, proj_long)
 
     def bearing_to(self, other):
         """
-        Calculate the bearing to another point.
+        Calculate the bearing to another coordinate position [deg].
         """
 
         fwd_azimuth, _back_azimuth, _distance = self.geodesic.inv(
@@ -37,12 +37,12 @@ class Point:
 
         return fwd_azimuth
 
-    def distance(self, other):
+    def dist(self, other):
         """
-        Calculate the geodesic distance to another point.
+        Calculate the geodesic distance to another coordinate position [m].
         """
 
-        _fwd_azimuth, _back_azimuth, distance = self.geodesic.inv(
+        _fwd_azimuth, _back_azimuth, dist = self.geodesic.inv(
             self.long, self.lat, other.long, other.lat)
 
-        return distance
+        return dist
