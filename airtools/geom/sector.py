@@ -6,12 +6,13 @@ class Sector:
     Area on the globe.
     """
 
-    def __init__(self, boundary_coords, waypoints):
+    def __init__(self, fixes, boundary, waypoints):
         """
         Construct a new instance.
         """
 
-        self.boundary = Polygon(map(lambda pos: Point(pos.long, pos.lat), boundary_coords))
+        self.boundary = Polygon(
+            map(lambda id: Point(fixes[id].long, fixes[id].lat), boundary))
         self.waypoints = waypoints
 
     def contains(self, coord):
@@ -19,4 +20,4 @@ class Sector:
         Calculate if a given coordinate position is contain within the sector boundary.
         """
 
-        return self.boundary.contains(Point(coord.longitude, coord.latitude))
+        return self.boundary.contains(Point(coord.long, coord.lat))
