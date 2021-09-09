@@ -12,21 +12,21 @@ def test_init():
 
 def test_forward():
     exeter = Coord(50.73497, -3.414952)
-    london = exeter.forward(283e3, 71.71)
+    london = exeter.forward(152.83, 71.71)
 
-    assert london.lat == approx(51.4700, 1e-2)
-    assert london.long == approx(0.4543, 1e-2)
+    assert london.lat == approx(51.4700, 1e-3)
+    assert london.long == approx(0.4543, 1e-3)
 
 
 def test_bearing_to():
     exeter = Coord(50.73497, -3.414952)
     london = Coord(51.4700, 0.4543)
 
-    assert exeter.bearing_to(london) == approx(71.71, 1e-5)
+    assert exeter.bearing_to(london) == approx(71.71, 1e-3)
 
 
 def test_distance():
     exeter = Coord(50.73497, -3.414952)
     london = Coord(51.4700, 0.4543)
 
-    assert exeter.dist(london) == approx(283e3, 1e-3)
+    assert exeter.dist(london) == approx(152.83, 1e-3)
