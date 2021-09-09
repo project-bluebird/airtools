@@ -16,20 +16,20 @@ class Point:
         self.lat = lat
         self.long = long
 
-    def forward(self, distance, bearing):
+    def forward(self, distance, heading):
         """
         Relative to the current position,
-        create a position a given distance away following a given bearing.
+        create a position a given distance away following a given heading.
         """
 
-        proj_longitude, proj_latitude, _ = self.geodesic.fwd(
-            self.longitude, self.latitude, bearing, distance)
+        proj_long, proj_lat, _ = self.geodesic.fwd(
+            self.long, self.lat, heading, distance)
 
-        return Point(proj_longitude, proj_latitude)
+        return Point(proj_lat, proj_long)
 
     def bearing_to(self, other):
         """
-        Calculate the bearing to another fix.
+        Calculate the bearing to another point.
         """
 
         fwd_azimuth, _back_azimuth, _distance = self.geodesic.inv(
@@ -39,7 +39,7 @@ class Point:
 
     def distance(self, other):
         """
-        Calculate the geodesic distance to another fix.
+        Calculate the geodesic distance to another point.
         """
 
         _fwd_azimuth, _back_azimuth, distance = self.geodesic.inv(
