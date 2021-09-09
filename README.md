@@ -4,21 +4,18 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Installation
-
 ```{bash}
 pip install airtools
 ```
 
 ## Developer guide
-
-### Dependencies
-
+### Virtual Environment
 ```{bash}
-pip install -r requirements-dev.txt
+conda env create -f environment.yml -v -n AirTools
+conda activate AirTools
 ```
 
-#### Tests
-
+### Tests
 ```{bash}
 $ pytest [<optional-arguments>] tests
 ```

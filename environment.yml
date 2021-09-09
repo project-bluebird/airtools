@@ -1,0 +1,11 @@
+# This file may be used to create an environment using:
+# $ conda env create --name <env> --file <this file>
+# platform: apple-m1
+name: AirTools
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python>=3.6
+  - pytest
