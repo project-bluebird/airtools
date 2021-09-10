@@ -37,10 +37,10 @@ class Coord:
         Calculate the bearing [deg] to another coordinate position.
         """
 
-        fwd_azimuth, _back_azimuth, _distance = self.geodesic.inv(
-            self.long, self.lat, other.long, other.lat)
+        _fwd_azimuth, back_azimuth, _distance = self.geodesic.inv(
+            other.long, other.lat, self.long, self.lat)
 
-        return fwd_azimuth
+        return back_azimuth % 360
 
     def dist(self, other: Coord) -> float:
         """
@@ -57,7 +57,7 @@ class Coord:
         Create a corresponing cartesian Point representation.
         """
 
-        return Point(self.long, self.lat)
+        return Point(self.lat, self.long)
 
     def __str__(self) -> str:
         """
@@ -68,8 +68,8 @@ class Coord:
             v = 'S'
 
         h = 'E'
-        if self.lat < 0:
-            v = 'W'
+        if self.long < 0:
+            h = 'W'
 
         return f"{abs(self.lat)}{v} {abs(self.long)}{h}"
 

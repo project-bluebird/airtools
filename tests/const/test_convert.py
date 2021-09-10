@@ -12,6 +12,8 @@ def test_lengths():
     assert math.pi * FT_TO_M == approx(0.95755743972, 1e-3)
     assert math.pi * NM_TO_M == approx(5818.2295878, 1e-3)
     assert math.pi * M_TO_NM == approx(0.001696324325054, 1e-3)
+    assert math.pi * DEG_TO_NM == approx(188.495559, 1e-3)
+    assert math.pi * NM_TO_DEG == approx(0.0523598776, 1e-3)
 
 
 def test_speeds():

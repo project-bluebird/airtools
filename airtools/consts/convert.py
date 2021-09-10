@@ -9,6 +9,11 @@ NM_TO_M = 1852
 # Multiply to convert meters [m] to nautical miles [NM]
 M_TO_NM = 1 / NM_TO_M
 
+# Multiply to convert meters [deg] to nautical miles [NM]
+DEG_TO_NM = 60
+# Multiply to convert nautical miles [NM] to degrees [deg]
+NM_TO_DEG = 1 / DEG_TO_NM
+
 
 # Speed
 # Multiply to convert meters per second [m/s] to knots [Kn]
