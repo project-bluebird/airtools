@@ -1,8 +1,10 @@
 import json
 from os import path
 
+from airtools.core.id import ID
 from airtools.geom.coord import Coord
 from airtools.geom.sector import Sector
+from airtools.io.json import JsonDecoder
 
 
 class Airspace:
@@ -10,8 +12,8 @@ class Airspace:
     Collection of all known fixes and sectors.
     """
 
-    fixes: dict[str, Coord]        # Dictionary of fix positions.
-    sectors: dict[str, Sector]     # Dictionary of all sectors.
+    fixes: dict[ID, Coord]        # Dictionary of fix positions.
+    sectors: dict[ID, Sector]     # Dictionary of all sectors.
 
     def __init__(self, fixes_filepath: path, sectors_filepath: path):
         """
@@ -27,7 +29,8 @@ class Airspace:
         """
 
         with open(str(filepath), 'r') as file:
-            self.fixes = {**self.fixes, **json.loads(file.read())}
+            self.fixes = {**self.fixes, **
+                          json.loads(file.read(), cls=JsonDecoder)}
 
     def load_sectors(self, filepath: path):
         """
@@ -35,9 +38,10 @@ class Airspace:
         """
 
         with open(str(filepath), 'r') as file:
-            self.sectors = {**self.sectors, **json.loads(file.read())}
+            self.sectors = {**self.sectors, **
+                            json.loads(file.read(), cls=JsonDecoder)}
 
-    def keep(self, sectors: list[str], rad: float):
+    def keep(self, sectors: list[ID], rad: float):
         """
         Prune all sectrols except the given remaing sectors list.
         Also prune all fixes further than a given distance [NM] of the remaing sectors.
