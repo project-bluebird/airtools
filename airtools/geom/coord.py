@@ -1,8 +1,8 @@
 from pyproj import Geod
 from shapely.geometry import Point
 
-from airtools.consts.convert import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
-from airtools.geom.coord import Coord
+from airtools.consts import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
+from airtools.geom import Coord
 
 
 class Coord:

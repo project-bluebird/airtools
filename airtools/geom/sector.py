@@ -1,7 +1,8 @@
 from shapely.geometry import Polygon, Point
 
-from airtools.geom.airspace import Airspace
-from airtools.geom.coord import Coord
+from airtools.core import ID, Route
+from airtools.geom import Airspace
+from airtools.geom import Coord
 
 
 DEG_TO_NM: float = 60  # There are 60 nautical miles per degree.
@@ -12,7 +13,7 @@ class Sector:
     Area on the globe.
     """
 
-    def __init__(self, boundary: list[str], waypoints: list[str]):
+    def __init__(self, boundary: list[ID], waypoints: list[ID], routes: dict[ID, Route]):
         """
         Construct a new instance.
         """
@@ -20,6 +21,9 @@ class Sector:
         self.boundary = Polygon(
             map(lambda id: Point(Airspace.fixes[id].long, Airspace.fixes[id].lat), boundary))
         self.waypoints = waypoints
+        self.routes = routes
+
+        return
 
     def contains(self, coord: Coord) -> bool:
         """

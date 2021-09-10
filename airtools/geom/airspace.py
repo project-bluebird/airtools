@@ -1,7 +1,8 @@
 import json
+from os import path
 
-from airtools.geom.coord import Coord
-from airtools.geom.sector import Sector
+from airtools.geom import Coord
+from airtools.geom import Sector
 
 
 class Airspace:
@@ -12,7 +13,7 @@ class Airspace:
     fixes: dict[str, Coord]        # Dictionary of fix positions.
     sectors: dict[str, Sector]     # Dictionary of all sectors.
 
-    def __init__(self, fixes_filepath: str, sectors_filepath: str):
+    def __init__(self, fixes_filepath: path, sectors_filepath: path):
         """
         Load the initial dictionary files of fixes and sectors.
         """
@@ -20,7 +21,7 @@ class Airspace:
         self.load_fixes(fixes_filepath)
         self.load_sectors(sectors_filepath)
 
-    def load_fixes(self, filepath: str):
+    def load_fixes(self, filepath: path):
         """
         Load additional fix data from a file.
         """
@@ -28,7 +29,7 @@ class Airspace:
         with open(filepath, 'r') as file:
             self.fixes = {**self.fixes, **json.loads(file.read())}
 
-    def load_sectors(self, filepath: str):
+    def load_sectors(self, filepath: path):
         """
         Load additional sector data from a file.
         """
