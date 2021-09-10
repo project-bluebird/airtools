@@ -1,6 +1,8 @@
 from pyproj import Geod
+from shapely.geometry import Point
 
 from airtools.consts.convert import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
+from airtools.geom.coord import Coord
 
 
 class Coord:
@@ -8,17 +10,17 @@ class Coord:
     (Latitude, Longitude) position on the globe.
     """
 
-    geodesic = Geod(ellps="WGS84")
+    geodesic: Geod = Geod(ellps="WGS84")
 
-    def __init__(self, lat, long):
+    def __init__(self, lat: float, long: float):
         """
         Construct a new instance.
         """
 
-        self.lat = lat      # [deg]
-        self.long = long    # [deg]
+        self.lat = lat       # [deg]
+        self.long = long     # [deg]
 
-    def forward(self, dist, heading):
+    def forward(self, dist: float, heading: float) -> Coord:
         """
         Determine the coordinate position a given distance away [NM]
         from the current position, following a given heading [deg].
@@ -29,7 +31,7 @@ class Coord:
 
         return Coord(proj_lat, proj_long)
 
-    def bearing_to(self, other):
+    def bearing_to(self, other: Coord) -> float:
         """
         Calculate the bearing [deg] to another coordinate position.
         """
@@ -39,7 +41,7 @@ class Coord:
 
         return fwd_azimuth
 
-    def dist(self, other):
+    def dist(self, other: Coord) -> float:
         """
         Calculate the geodesic distance [NM] to another coordinate position.
         """
@@ -47,4 +49,11 @@ class Coord:
         _fwd_azimuth, _back_azimuth, dist = self.geodesic.inv(
             self.long, self.lat, other.long, other.lat)
 
-        return NAUTICAL_MILES_IN_METERS * dist 
+        return NAUTICAL_MILES_IN_METERS * dist
+
+    def as_point(self) -> Point:
+        """
+        Create a corresponing cartesian Point representation.
+        """
+
+        return Point(self.long, self.lat)
