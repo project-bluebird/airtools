@@ -3,7 +3,7 @@ from __future__ import annotations
 from pyproj import Geod
 from shapely.geometry import Point
 
-from airtools.consts.convert import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
+from airtools.consts.convert import M_TO_NM, NM_TO_M
 
 
 class Coord:
@@ -28,7 +28,7 @@ class Coord:
         """
 
         proj_long, proj_lat, _ = self.geodesic.fwd(
-            self.long, self.lat, heading, METERS_IN_NAUTICAL_MILES * dist)
+            self.long, self.lat, heading, dist * NM_TO_M)
 
         return Coord(proj_lat, proj_long)
 
@@ -50,7 +50,7 @@ class Coord:
         _fwd_azimuth, _back_azimuth, dist = self.geodesic.inv(
             self.long, self.lat, other.long, other.lat)
 
-        return NAUTICAL_MILES_IN_METERS * dist
+        return dist * M_TO_NM
 
     def as_point(self) -> Point:
         """

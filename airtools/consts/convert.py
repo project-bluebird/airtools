@@ -1,11 +1,22 @@
 # Lengths
-METERS_IN_FEET = 0.3048                                         # [m / ft]
-FEET_IN_METERS = 1 / METERS_IN_FEET                             # [ft / m]
+# Multiply to convert meters [m] to feet [ft]
+M_TO_FT = 3.28084
+# Multiply to convert feet [ft] to meters [m]
+FT_TO_M = 1 / M_TO_FT
 
-METERS_IN_NAUTICAL_MILES = 1852                                 # [m / NM]
-NAUTICAL_MILES_IN_METERS = 1 / METERS_IN_NAUTICAL_MILES         # [NM / m]
+# Multiply to convert nautical miles [NM] to meters [m]
+NM_TO_M = 1852
+# Multiply to convert meters [m] to nautical miles [NM]
+M_TO_NM = 1 / NM_TO_M
 
 
 # Speed
-METERS_PER_SECOND_IN_KNOTS = 1.944                              # [m/s / kn]
-KNOTS_IN_METERS_PER_SECOND = 1 / METERS_PER_SECOND_IN_KNOTS     # [kn / m/s]
+# Multiply to convert meters per second [m/s] to knots [Kn]
+MPS_TO_KN = 1.94384
+# Multiply to convert knots [Kn] to meters per second [m/s]
+KN_TO_MPS = 1 / MPS_TO_KN
+
+# Multiply to convert meters per second [m/s] to kilometers per hour [Km/hr]
+MPS_TO_KPH = 3.6
+# Multiply to convert kilometers per hour [Km/hr] to meters per second [m/s]
+KPH_TO_MPS = 1 / MPS_TO_KPH
