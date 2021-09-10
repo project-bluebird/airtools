@@ -30,8 +30,12 @@ class JsonDecoder(json.JSONDecoder):
             self, object_hook=self.object_hook, *args, **kwargs)
 
     def object_hook(self, dct):
-        if "lat" in dct:
-            if "long" in dct:
-                if len(dct) == 2:
-                    return Coord(dct["lat"], dct["long"])
+        """
+        Check if type is known.
+        """
+
+        # Check if it is a Coord.
+        if list(dct.keys()) == ["lat", "long"]:
+            return Coord(dct["lat"], dct["long"])
+
         return dct
