@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from pyproj import Geod
 from shapely.geometry import Point
 
-from airtools.consts import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
-from airtools.geom import Coord
+from airtools.consts.convert import METERS_IN_NAUTICAL_MILES, NAUTICAL_MILES_IN_METERS
 
 
 class Coord:
@@ -14,8 +15,8 @@ class Coord:
 
     def __init__(self, lat: float, long: float):
         """
-        Construct a new instance.
-        """
+            Construct a new instance.
+            """
 
         self.lat = lat       # [deg]
         self.long = long     # [deg]
@@ -71,3 +72,10 @@ class Coord:
             v = 'W'
 
         return f"{abs(self.lat)}{v} {abs(self.long)}{h}"
+
+    def as_json(self) -> dict[str, Coord]:
+        """
+        Create a JSON representation of the coordinate.
+        """
+
+        return self.__dict__

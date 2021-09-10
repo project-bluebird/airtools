@@ -1,8 +1,8 @@
 import json
 from os import path
 
-from airtools.geom import Coord
-from airtools.geom import Sector
+from airtools.geom.coord import Coord
+from airtools.geom.sector import Sector
 
 
 class Airspace:

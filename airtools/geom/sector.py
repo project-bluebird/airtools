@@ -1,8 +1,9 @@
 from shapely.geometry import Polygon, Point
 
-from airtools.core import ID, Route
-from airtools.geom import Airspace
-from airtools.geom import Coord
+from airtools.core.id import ID
+from airtools.core.route import Route
+from airtools.geom.airspace import Airspace
+from airtools.geom.coord import Coord
 
 
 DEG_TO_NM: float = 60  # There are 60 nautical miles per degree.
