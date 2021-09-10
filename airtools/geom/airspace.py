@@ -26,7 +26,7 @@ class Airspace:
         Load additional fix data from a file.
         """
 
-        with open(filepath, 'r') as file:
+        with open(str(filepath), 'r') as file:
             self.fixes = {**self.fixes, **json.loads(file.read())}
 
     def load_sectors(self, filepath: path):
@@ -34,7 +34,7 @@ class Airspace:
         Load additional sector data from a file.
         """
 
-        with open(filepath, 'r') as file:
+        with open(str(filepath), 'r') as file:
             self.sectors = {**self.sectors, **json.loads(file.read())}
 
     def keep(self, sectors: list[str], rad: float):
