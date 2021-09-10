@@ -57,3 +57,17 @@ class Coord:
         """
 
         return Point(self.long, self.lat)
+
+    def __str__(self) -> str:
+        """
+        Create a string representation of the coordinate.
+        """
+        v = 'N'
+        if self.lat < 0:
+            v = 'S'
+
+        h = 'E'
+        if self.lat < 0:
+            v = 'W'
+
+        return f"{abs(self.lat)}{v} {abs(self.long)}{h}"
