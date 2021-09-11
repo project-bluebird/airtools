@@ -11,7 +11,7 @@ class Sector:
     Area on the globe.
     """
 
-    def __init__(self, boundary: list[ID], waypoints: list[ID], routes: dict[ID, Route]):
+    def __init__(self, boundary: list[ID], routes: dict[ID, Route]):
         """
         Construct a new instance.
         """
@@ -19,7 +19,6 @@ class Sector:
 
         self.boundary = Polygon(
             map(lambda id: Point(World.fixes[id].long, World.fixes[id].lat), boundary))
-        self.waypoints = waypoints
         self.routes = routes
 
         return

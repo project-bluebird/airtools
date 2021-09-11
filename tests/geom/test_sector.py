@@ -10,7 +10,6 @@ def test_init():
 
     sector = Sector(
         ["B000", "B001", "B019", "B020"],
-        ["ALFA", "BRAV", "CHAR", "ECHO", "FOXT"],
         {
             "northbound": ["ALFA", "BRAV", "CHAR", "ECHO", "FOXT"],
             "southbound": ["FOXT", "ECHO", "CHAR", "BRAV", "ALFA"],

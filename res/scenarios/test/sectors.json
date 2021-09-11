@@ -6,13 +6,6 @@
             "B019",
             "B020"
         ],
-        "waypoints": [
-            "ALFA",
-            "BRAV",
-            "CHAR",
-            "ECHO",
-            "FOXT"
-        ],
         "routes": {
             "northbound": [
                 "ALFA",
@@ -44,17 +37,6 @@
             "B017",
             "B018",
             "B019"
-        ],
-        "waypoints": [
-            "DELT",
-            "ECHO",
-            "GOLF",
-            "HOTE",
-            "INDI",
-            "JULI",
-            "KILO",
-            "MIKE",
-            "NOVE"
         ],
         "routes": {
             "northbound": [
@@ -98,15 +80,6 @@
             "B012",
             "B013",
             "B014"
-        ],
-        "waypoints": [
-            "LIMA",
-            "MIKE",
-            "OSCA",
-            "PAPA",
-            "QUEB",
-            "ROME",
-            "SIER"
         ],
         "routes": {
             "northeastbound": [
