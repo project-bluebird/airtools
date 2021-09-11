@@ -6,17 +6,18 @@ from shapely.geometry import Point
 from airtools.consts.convert import M_TO_NM, NM_TO_M
 
 
+GEODESIC: Geod = Geod(ellps="WGS84")
+
+
 class Coord:
     """
-    (Latitude, Longitude) position on the globe.
+    Position on the globe.
     """
-
-    geodesic: Geod = Geod(ellps="WGS84")
 
     def __init__(self, lat: float, long: float):
         """
-            Construct a new instance.
-            """
+        Construct a new instance.
+        """
 
         self.lat = lat       # [deg]
         self.long = long     # [deg]
@@ -27,7 +28,7 @@ class Coord:
         from the current position, following a given heading [deg].
         """
 
-        proj_long, proj_lat, _ = self.geodesic.fwd(
+        proj_long, proj_lat, _ = GEODESIC.fwd(
             self.long, self.lat, heading, dist * NM_TO_M)
 
         return Coord(proj_lat, proj_long)
@@ -37,7 +38,7 @@ class Coord:
         Calculate the bearing [deg] to another coordinate position.
         """
 
-        _fwd_azimuth, back_azimuth, _distance = self.geodesic.inv(
+        _fwd_azimuth, back_azimuth, _distance = GEODESIC.inv(
             other.long, other.lat, self.long, self.lat)
 
         return back_azimuth % 360
@@ -47,7 +48,7 @@ class Coord:
         Calculate the geodesic distance [NM] to another coordinate position.
         """
 
-        _fwd_azimuth, _back_azimuth, dist = self.geodesic.inv(
+        _fwd_azimuth, _back_azimuth, dist = GEODESIC.inv(
             self.long, self.lat, other.long, other.lat)
 
         return dist * M_TO_NM

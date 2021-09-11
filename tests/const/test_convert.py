@@ -1,7 +1,7 @@
 from pytest import approx
 import math
 
-from airtools.consts.convert import *
+from airtools.consts.convert import M_TO_FT, FT_TO_M, NM_TO_M, M_TO_NM, DEG_TO_NM, NM_TO_DEG, MPS_TO_KN, KN_TO_MPS, MPS_TO_KPH, KPH_TO_MPS
 
 
 def test_lengths():

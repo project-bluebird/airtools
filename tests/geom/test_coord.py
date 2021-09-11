@@ -2,7 +2,7 @@ from pytest import approx
 import math
 
 from airtools.geom.coord import Coord
-from airtools.consts.convert import *
+from airtools.consts.convert import DEG_TO_NM
 
 
 FIXES = {
@@ -19,6 +19,7 @@ FIXES = {
 
 
 def test_init():
+
     assert FIXES["O"].lat == 0
     assert FIXES["O"].long == 0
 
@@ -42,6 +43,7 @@ def test_init():
 
 
 def test_forward():
+
     origin = Coord(0, 0)
     north_east = origin.forward(math.sqrt(2) * DEG_TO_NM, 45)
     south_east = origin.forward(math.sqrt(2) * DEG_TO_NM, 45 + 90)
@@ -59,6 +61,7 @@ def test_forward():
 
 
 def test_bearing_to():
+
     assert FIXES["O"].bearing_to(FIXES["N"]) == approx(0, 1e-2)
     assert FIXES["O"].bearing_to(FIXES["NE"]) == approx(45, 1e-2)
     assert FIXES["O"].bearing_to(FIXES["E"]) == approx(90, 1e-2)
@@ -79,6 +82,7 @@ def test_bearing_to():
 
 
 def test_dist():
+
     assert FIXES["O"].dist(FIXES["N"]) == approx(60, 1e-2)
     assert FIXES["O"].dist(FIXES["NE"]) == approx(60 * math.sqrt(2), 1e-2)
     assert FIXES["O"].dist(FIXES["E"]) == approx(60, 1e-2)
@@ -99,6 +103,7 @@ def test_dist():
 
 
 def test_as_point():
+
     p_north = FIXES["N"].as_point()
     assert p_north.x == 1
     assert p_north.y == 0
@@ -133,6 +138,7 @@ def test_as_point():
 
 
 def test_str():
+
     assert str(FIXES["N"]) == "1N 0E"
     assert str(FIXES["NE"]) == "1N 1E"
     assert str(FIXES["E"]) == "0N 1E"

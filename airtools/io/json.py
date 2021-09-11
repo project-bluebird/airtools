@@ -1,6 +1,7 @@
 import json
 
 from airtools.geom.coord import Coord
+from airtools.geom.sector import Sector
 
 
 class JsonEncoder(json.JSONEncoder):
@@ -37,5 +38,9 @@ class JsonDecoder(json.JSONDecoder):
         # Check if it is a Coord.
         if list(dct.keys()) == ["lat", "long"]:
             return Coord(dct["lat"], dct["long"])
+
+        # Check if it is a Sector.
+        if list(dct.keys()) == ["boundary", "waypoints", "routes"]:
+            return Sector(dct["boundary"], dct["waypoints"], dct["routes"])
 
         return dct

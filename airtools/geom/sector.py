@@ -1,12 +1,9 @@
 from shapely.geometry import Polygon, Point
 
+from airtools.consts.convert import DEG_TO_NM
 from airtools.core.id import ID
 from airtools.core.route import Route
-from airtools.geom.airspace import Airspace
 from airtools.geom.coord import Coord
-
-
-DEG_TO_NM: float = 60  # There are 60 nautical miles per degree.
 
 
 class Sector:
@@ -18,9 +15,10 @@ class Sector:
         """
         Construct a new instance.
         """
+        from airtools.geom.world import World
 
         self.boundary = Polygon(
-            map(lambda id: Point(Airspace.fixes[id].long, Airspace.fixes[id].lat), boundary))
+            map(lambda id: Point(World.fixes[id].long, World.fixes[id].lat), boundary))
         self.waypoints = waypoints
         self.routes = routes
 
@@ -35,7 +33,7 @@ class Sector:
 
     def dist(self, coord: Coord) -> float:
         """
-        Calculate the minimum seperation distance between the given coord and the sector boundary.
+        Calculate the minimum seperation distance [NM] between the given coord and the sector boundary.
         """
 
         return self.boundary.distance(coord.as_point()) * DEG_TO_NM

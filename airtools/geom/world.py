@@ -1,5 +1,4 @@
 import json
-from os import path
 
 from airtools.core.id import ID
 from airtools.geom.coord import Coord
@@ -7,23 +6,20 @@ from airtools.geom.sector import Sector
 from airtools.io.json import JsonDecoder
 
 
-class Airspace:
+class __World__:
     """
     Collection of all known fixes and sectors.
     """
 
-    fixes: dict[ID, Coord]        # Dictionary of fix positions.
-    sectors: dict[ID, Sector]     # Dictionary of all sectors.
-
-    def __init__(self, fixes_filepath: path, sectors_filepath: path):
+    def __init__(self, fixes: dict[ID, Coord] = {}, sectors:  dict[ID, Sector] = {}):
         """
-        Load the initial dictionary files of fixes and sectors.
+        Construct an instance with an initial set of fixes and sectors.
         """
 
-        self.load_fixes(fixes_filepath)
-        self.load_sectors(sectors_filepath)
+        self.fixes: dict[ID, Coord] = {}
+        self.sectors: dict[ID, Sector] = {}
 
-    def load_fixes(self, filepath: path):
+    def load_fixes(self, filepath: str):
         """
         Load additional fix data from a file.
         """
@@ -32,7 +28,7 @@ class Airspace:
             self.fixes = {**self.fixes, **
                           json.loads(file.read(), cls=JsonDecoder)}
 
-    def load_sectors(self, filepath: path):
+    def load_sectors(self, filepath: str):
         """
         Load additional sector data from a file.
         """
@@ -53,9 +49,12 @@ class Airspace:
         self.sectors = remaining_sectors
 
         remaining_fixes = {}
-        for fix_id, coord in self.fixes.items():
-            for sec_id, sector in self.sectors.items():
+        for id, coord in self.fixes.items():
+            for sector in self.sectors.values():
                 if sector.dist(coord) <= rad:
-                    remaining_fixes[fix_id] = coord
+                    remaining_fixes[id] = coord
                 continue
         self.fixes = remaining_fixes
+
+
+World = __World__()

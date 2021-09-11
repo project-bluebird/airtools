@@ -1,0 +1,142 @@
+{
+    "i": {
+        "boundary": [
+            "B000",
+            "B001",
+            "B019",
+            "B020"
+        ],
+        "waypoints": [
+            "ALFA",
+            "BRAV",
+            "CHAR",
+            "ECHO",
+            "FOXT"
+        ],
+        "routes": {
+            "northbound": [
+                "ALFA",
+                "BRAV",
+                "CHAR",
+                "ECHO",
+                "FOXT"
+            ],
+            "southbound": [
+                "FOXT",
+                "ECHO",
+                "CHAR",
+                "BRAV",
+                "ALFA"
+            ]
+        }
+    },
+    "x": {
+        "boundary": [
+            "B001",
+            "B002",
+            "B003",
+            "B004",
+            "B005",
+            "B006",
+            "B014",
+            "B015",
+            "B016",
+            "B017",
+            "B018",
+            "B019"
+        ],
+        "waypoints": [
+            "DELT",
+            "ECHO",
+            "GOLF",
+            "HOTE",
+            "INDI",
+            "JULI",
+            "KILO",
+            "MIKE",
+            "NOVE"
+        ],
+        "routes": {
+            "northbound": [
+                "DELT",
+                "ECHO",
+                "INDI",
+                "MIKE",
+                "NOVE"
+            ],
+            "eastbound": [
+                "GOLF",
+                "HOTE",
+                "INDI",
+                "JULI",
+                "KILO"
+            ],
+            "southbound": [
+                "NOVE",
+                "MIKE",
+                "INDI",
+                "ECHO",
+                "DELT"
+            ],
+            "westbound": [
+                "KILO",
+                "JULI",
+                "INDI",
+                "HOTE",
+                "GOLF"
+            ]
+        }
+    },
+    "y": {
+        "boundary": [
+            "B006",
+            "B007",
+            "B008",
+            "B009",
+            "B010",
+            "B011",
+            "B012",
+            "B013",
+            "B014"
+        ],
+        "waypoints": [
+            "LIMA",
+            "MIKE",
+            "OSCA",
+            "PAPA",
+            "QUEB",
+            "ROME",
+            "SIER"
+        ],
+        "routes": {
+            "northeastbound": [
+                "LIMA",
+                "MIKE",
+                "OSCA",
+                "QUEB",
+                "SIER"
+            ],
+            "southeastbound": [
+                "SIER",
+                "QUEB",
+                "OSCA",
+                "MIKE",
+                "LIMA"
+            ],
+            "northwestbound": [
+                "LIMA",
+                "MIKE",
+                "OSCA",
+                "PAPA",
+                "ROME"
+            ],
+            "wouthwestbound": [
+                "ROME",
+                "PAPA",
+                "OSCA",
+                "MIKE",
+                "LIMA"
+            ]
+        }
+    }
+}
